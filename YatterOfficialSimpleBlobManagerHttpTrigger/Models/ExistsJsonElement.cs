@@ -1,7 +1,7 @@
 ﻿using System;
 namespace YatterOfficialSimpleBlobManagerHttpTrigger.Models
 {
-    public class ExistsDto
+    public class ExistsJsonElement
     {
         public bool Exists { get; set; }
     }
