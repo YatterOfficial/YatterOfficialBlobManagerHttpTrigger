@@ -28,7 +28,7 @@ In such a case, additional handling will have to be undertaken in the TRequest /
 ## Advantages of the TRequest / TResponse pattern
 
 - Highly detailed TRequest and Tresponse criteria can be encapsulated in classes that inherit from RequestBase and ResponseBase, respectively.
-- The TRequest object can manage requests to a particular container, for example, by filtering container paths that should not be accessed.
+- The TRequest object can manage requests to a particular container, for example, by filtering container paths that should not be accessed, or even by altering file paths that are known to have been moved and requesting that content instead.
 - The TResponse object can manage responses that cater for different contexts, for example, by validating that a response file has a particular structure, or encrypting it, or even by examining the content of a file, then getting other content that is based upon it's attributes, then synthesising both.
 - Whatever the specialised need, just create a set of TRequest / TResponse objects to suit!
 
