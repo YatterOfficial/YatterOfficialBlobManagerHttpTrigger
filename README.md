@@ -1,5 +1,23 @@
 # YatterOfficialBlobManagerHttpTrigger
 
+## Overview
+
+This HttpTrigger uses a TRequest / TResponse URL pattern with secret key/s in the Request Header to facilitate highly secure Azure Storage blob accessibility, using the following operations:
+
+- exists
+- get
+- add
+- delete
+
+An example url is as follows:
+
+- ```{URL}/api/data?operation=get&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse```
+
+Blobs can only be accessed where the container name is defined in a class that inherits from RequestBase, and without any modification, this Blob Manager can interact with a container that is defined in the Environmental Settings with the key ```YATTER_STORAGE_GENERALBLOBREQUESTCONTAINER```
+
+Additional containers can be accessed by creating a new class, see below for an example.
+
+Requests will only be accepted if there is a key in the header that is defined by the Environmental Variable key ```YATTER_REQUESTHEADER_KEY``` and which has a corresponding ```YATTER_REQUESTHEADER_VALUE``` value.
 
 ## Quickstart
 
@@ -74,5 +92,5 @@ These calls will only allow file interaction with the container that is declared
 
 - then adjust the URL to suit the new BlobRequest:
   - {URL}/api/data?operation=exists&path=myfile.txt&trequest=MyNewBlobRequest&tresponse=BlobResponse 
-- as well as adding the new 'MyNewBlobRequest' to an if-else in the code.
+- as well as adding the new 'MyNewBlobRequest' to an if-else in the code in [this](https://github.com/YatterOfficial/YatterOfficialBlobManagerHttpTrigger/blob/master/YatterOfficialSimpleBlobManagerHttpTrigger/YatterBlobManagerHttpTrigger.cs) file.
 
