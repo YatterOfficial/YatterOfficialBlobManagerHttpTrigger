@@ -15,25 +15,34 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
     /* 
      * EXAMPLE CALLS:
      * 
-     * {URL}/api/data?operation=exists&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
-     * POST, GET
-     * Response: 
-     * 200 OK with {"DataType":"Yatter.Storage.Azure.ExistsResponse","Exists":true} in Body
-     * 
-     * {URL}/api/data?operation=get&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
-     * POST, GET
-     * Response:
-     * 200 OK with blob content in body
-     * 
-     * {URL}/api/data?operation=add&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
-     * POST upload content in body of request
-     * Response:
-     * 200 OK
-     * 
-     * {URL}/api/data?operation=delete&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse POST, GET
-     * POST, GET
-     * Response: 
-     * 200 OK
+        OPERATION: exists
+        {URL}/api/data?operation=exists&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
+        POST, GET
+        Response: 
+        200 OK with {"DataType":"Yatter.Storage.Azure.ExistsResponse","Exists":true} in Body
+        200 OK with {"DataType":"Yatter.Storage.Azure.ExistsResponse","Exists":false} in Body
+        400 BadRequest with MessageDto serialized in body
+
+        OPERATION: get
+        {URL}/api/data?operation=get&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
+        POST, GET
+        Response:
+        200 OK with blob content in body
+        400 BadRequest with MessageDto serialized in body
+
+        OPERATION: add
+        {URL}/api/data?operation=add&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
+        POST upload content in body of request
+        Response:
+        200 OK
+        400 BadRequest with MessageDto serialized in body
+
+        OPERATION: delete
+        {URL}/api/data?operation=delete&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse POST, GET
+        POST, GET
+        Response: 
+        200 OK
+        400 BadRequest with MessageDto serialized in body
      * */
 
     public static class YatterOfficialBlobManagerHttpTrigger
