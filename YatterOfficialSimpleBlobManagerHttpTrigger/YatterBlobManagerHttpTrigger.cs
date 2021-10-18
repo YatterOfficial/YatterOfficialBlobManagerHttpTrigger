@@ -82,7 +82,7 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
             else
             {
                 log.LogInformation("Dead Canary!");
-                return new BadRequestObjectResult(new MessageDto { Message = "Dead Canary!" });
+                return new BadRequestObjectResult(new MessageJsonElement { Message = "Dead Canary!" });
             }
             #endregion
 
@@ -130,18 +130,18 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
                 if (string.IsNullOrEmpty(operation) || string.IsNullOrEmpty(path))
                 {
                     log.LogInformation($"Exiting, BadRequest, Querystring is not correctly formed");
-                    return new BadRequestObjectResult(new MessageDto { Message = "Querystring is not correctly formed" });
+                    return new BadRequestObjectResult(new MessageJsonElement { Message = "Querystring is not correctly formed" });
                 }
 
                 if (string.IsNullOrEmpty(connectionString))
                 {
                     log.LogInformation($"Exiting, BadRequest, Our Azure ConnectionString has not been set internally, please see an Administrator!");
-                    return new BadRequestObjectResult(new MessageDto { Message = "Our Azure ConnectionString has not been set internally, please see an Administrator!" });
+                    return new BadRequestObjectResult(new MessageJsonElement { Message = "Our Azure ConnectionString has not been set internally, please see an Administrator!" });
                 }
             }
 
             log.LogInformation($"Exiting, BadRequest, You've hit the 'Failed API Catch-All', no further information is available.");
-            return new BadRequestObjectResult(new MessageDto { Message = "You've hit the 'Failed API Catch-All', no further information is available." });
+            return new BadRequestObjectResult(new MessageJsonElement { Message = "You've hit the 'Failed API Catch-All', no further information is available." });
         }
 
         private static async Task<IActionResult> Operate<TResponse, TRequest>(ILogger log, HttpRequest req, string operation, Yatter.Storage.Azure.ResponsiveBlobManager responsiveBlobManager, TRequest blobRequest) where TResponse : ResponseBase, new() where TRequest : RequestBase, new()
@@ -157,7 +157,7 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
                 else
                 {
                     log.LogInformation($"Exiting, BadRequest, {response.Message}");
-                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageDto { Message = response.Message }));
+                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message }));
                 }
             }
             else if (operation.Equals("add"))
@@ -172,7 +172,7 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
                 else
                 {
                     log.LogInformation($"Exiting, BadRequest, {response.Message}");
-                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageDto { Message = response.Message }));
+                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message }));
                 }
             }
             else if (operation.Equals("exists"))
@@ -186,8 +186,8 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
                 }
                 else
                 {
-                    log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageDto { Message = response.Message })}");
-                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageDto { Message = response.Message }));
+                    log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message })}");
+                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message }));
                 }
             }
             else if (operation.Equals("delete"))
@@ -201,14 +201,14 @@ namespace YatterOfficialSimpleBlobManagerHttpTrigger
                 }
                 else
                 {
-                    log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageDto { Message = response.Message })}");
-                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageDto { Message = response.Message }));
+                    log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message })}");
+                    return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageJsonElement { Message = response.Message }));
                 }
             }
             else
             {
-                log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageDto { Message = $"Unexpected operation in querystring: '{operation}'" })}");
-                return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageDto { Message = $"Unexpected operation in querystring: '{operation}'" }));
+                log.LogInformation($"Exiting, BadRequest, {JsonConvert.SerializeObject(new MessageJsonElement { Message = $"Unexpected operation in querystring: '{operation}'" })}");
+                return new BadRequestObjectResult(JsonConvert.SerializeObject(new MessageJsonElement { Message = $"Unexpected operation in querystring: '{operation}'" }));
             }
 
             // Unreachable
