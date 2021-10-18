@@ -36,7 +36,7 @@ Set up the following Environmental Variables:
 
 Environment:
 
-- If running locally, set thease values in the file: local.settings.json
+- If running locally, set these values in the file: local.settings.json
 - If running in Azure, go to the Azure Resource for this HttpTrigger, select Settings/Configuration, then 'New application setting', and add the keys above, and their corresponding values.
 
 
