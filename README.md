@@ -25,6 +25,13 @@ Special handling of the blob can be undertaken by creating a new class that inhe
 
 In such a case, additional handling will have to be undertaken in the TRequest / TResponse if-else routine, which is quite easy to implement.
 
+## Advantages of the TRequest / TResponse pattern
+
+- Highly detailed TRequest and Tresponse criteria can be encapsulated in classes that inherit from RequestBase and ResponseBase, respectively.
+- The TRequest object can manage requests to a particular container, for example, by filtering container paths that should not be accessed.
+- The TResponse object can manage responses that cater for different contexts, for example, by validating that a response file has a particular structure, or encrypting it, or even by examining the content of a file, then getting other content that is based upon it's attributes, then synthesising both.
+- Whatever the specialised need, just create a set of TRequest / TResponse objects to suit!
+
 ## Quickstart
 
 Set up the following Environmental Variables:
@@ -108,4 +115,5 @@ These calls will only allow file interaction with the container that is declared
 - then adjust the URL to suit the new BlobRequest:
   - ```{URL}/api/data?operation=exists&path=myfile.txt&trequest=MyNewBlobRequest&tresponse=BlobResponse```
 - as well as adding the new 'MyNewBlobRequest' to an if-else in the code in [this](https://github.com/YatterOfficial/YatterOfficialBlobManagerHttpTrigger/blob/master/YatterOfficialSimpleBlobManagerHttpTrigger/YatterBlobManagerHttpTrigger.cs) file.
+
 
