@@ -50,7 +50,7 @@ POST, GET
 Response: 
 200 OK with {"DataType":"Yatter.Storage.Azure.ExistsResponse","Exists":true} in Body
 200 OK with {"DataType":"Yatter.Storage.Azure.ExistsResponse","Exists":false} in Body
-400 BadRequest
+400 BadRequest with message in body
  
 OPERATION: get
 {URL}/api/data?operation=get&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=BlobResponse 
