@@ -19,6 +19,12 @@ Additional containers can be accessed by creating a new class, see below for an 
 
 Requests will only be accepted if there is a key in the header that is defined by the Environmental Variable key ```YATTER_REQUESTHEADER_KEY``` and which has a corresponding ```YATTER_REQUESTHEADER_VALUE``` value.
 
+Special handling of the blob can be undertaken by creating a new class that inherits from ResponseBase, and replacing the TResponse class with the new one, eg:
+
+- ```{URL}/api/data?operation=get&path=myfile.txt&trequest=GeneralBlobRequest&tresponse=MySpecialBlobResponse```
+
+In such a case, additional handling will have to be undertaken in the TRequest / TResponse if-else routine, which is quite easy to implement.
+
 ## Quickstart
 
 Set up the following Environmental Variables:
@@ -91,6 +97,6 @@ These calls will only allow file interaction with the container that is declared
 ```
 
 - then adjust the URL to suit the new BlobRequest:
-  - {URL}/api/data?operation=exists&path=myfile.txt&trequest=MyNewBlobRequest&tresponse=BlobResponse 
+  - ```{URL}/api/data?operation=exists&path=myfile.txt&trequest=MyNewBlobRequest&tresponse=BlobResponse```
 - as well as adding the new 'MyNewBlobRequest' to an if-else in the code in [this](https://github.com/YatterOfficial/YatterOfficialBlobManagerHttpTrigger/blob/master/YatterOfficialSimpleBlobManagerHttpTrigger/YatterBlobManagerHttpTrigger.cs) file.
 
