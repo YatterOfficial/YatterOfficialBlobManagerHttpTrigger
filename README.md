@@ -116,4 +116,4 @@ These calls will only allow file interaction with the container that is declared
   - ```{URL}/api/data?operation=exists&path=myfile.txt&trequest=MyNewBlobRequest&tresponse=BlobResponse```
 - as well as adding the new 'MyNewBlobRequest' to an if-else in the code in [this](https://github.com/YatterOfficial/YatterOfficialBlobManagerHttpTrigger/blob/master/YatterOfficialSimpleBlobManagerHttpTrigger/YatterBlobManagerHttpTrigger.cs) file.
 
-
+y@R and You-At-A-Resource are trademarks of Count Anthony Harrison, operating from the United Kingdom
